@@ -1,0 +1,34 @@
+name: claude-ultracode
+description: Большая задача — несколько агентов с независимой самопроверкой
+labels: [claude, ultracode]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Режим ultracode: реализация, затем независимые ревьюеры и исправления — PR приходит уже проверенным. До 5 часов, лимит $30. С меткой `max` — на максимальной глубине рассуждения, лимит $50. Claude возьмёт задачу сразу после создания issue и откроет draft PR. Замечания оставляй в ревью PR, а в итоговом комментарии ревью пиши `@claude`. Мёржишь ты.
+  - type: textarea
+    id: task
+    attributes:
+      label: Что сделать
+      description: Суть задачи и зачем она нужна.
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Готово, когда
+      description: Проверяемые критерии — по одному на строку.
+      value: |
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: dont-touch
+    attributes:
+      label: Не трогать
+      description: Файлы, модули или поведение, которые менять нельзя.
+  - type: textarea
+    id: context
+    attributes:
+      label: Контекст
+      description: Ссылки, примеры, подсказки по реализации.
