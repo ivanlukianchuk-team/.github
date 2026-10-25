@@ -1,0 +1,34 @@
+name: claude-plan
+description: Сначала план — Claude изучит код и предложит план, код только после твоего «делай»
+labels: [claude, plan]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Режим plan: Claude изучит код и опубликует план комментарием, ничего не меняя. Подходит — напиши `@claude делай`, и он реализует по плану и откроет draft PR; правки плана — комментарием с `@claude`. Замечания оставляй в ревью PR, а в итоговом комментарии ревью пиши `@claude`. Мёржишь ты.
+  - type: textarea
+    id: task
+    attributes:
+      label: Что сделать
+      description: Суть задачи и зачем она нужна.
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Готово, когда
+      description: Проверяемые критерии — по одному на строку.
+      value: |
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: dont-touch
+    attributes:
+      label: Не трогать
+      description: Файлы, модули или поведение, которые менять нельзя.
+  - type: textarea
+    id: context
+    attributes:
+      label: Контекст
+      description: Ссылки, примеры, подсказки по реализации.
